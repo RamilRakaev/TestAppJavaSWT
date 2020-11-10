@@ -1,5 +1,4 @@
 
-
 public class Document {
 	
 	Document()
@@ -14,8 +13,8 @@ public class Document {
 		date=new DateDoc(_date);
 	}
 	//Properties
-	public static String sep="&";
-	protected static String end="&&";
+	public static final String SEP="&";
+	protected static final String END="&&";
 	String number;
 	String user;
 	double sum;
@@ -24,7 +23,7 @@ public class Document {
 	
 	protected String getValue() 
 	{
-		return String.join(sep, number,user,Double.toString(sum),date.getDate());
+		return String.join(SEP, number,user,Double.toString(sum),date.getDate());
 	}
 	
 	class DateDoc{
@@ -40,16 +39,28 @@ public class Document {
 			String[] num=_dateDoc.split("\\.");
 			if(num.length==3) 
 			{
+				try {
 				day=Integer.parseInt(num[0]);
 				month=Integer.parseInt(num[1]);
 				year=Integer.parseInt(num[2]);
+				}
+				catch(Exception e)
+				{
+					System.out.println(e.getMessage());
+					SetNull();
+				}
 			}
 			else 
 			{
-				day=0;
-				month=0;
-				year=0;
+				SetNull();
 			}
+		}
+		
+		private void SetNull() 
+		{
+			day=0;
+			month=0;
+			year=0;
 		}
 		
 		private int day;

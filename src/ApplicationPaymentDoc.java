@@ -51,8 +51,8 @@ public class ApplicationPaymentDoc extends Document{
 	
 	public String getValueAppPay() 
 	{
-		return "Заявка_на_оплату"+sep+String.join(sep,getValue(),counterparty, 
-				currency,Double.toString(rate),Double.toString(commission))+end;
+		return "Заявка_на_оплату"+SEP+String.join(SEP,getValue(),counterparty, 
+				currency,Double.toString(rate),Double.toString(commission))+END;
 	}
 	
 	public String getShortValue() 

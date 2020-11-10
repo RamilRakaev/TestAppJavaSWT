@@ -30,7 +30,7 @@ public class PaymentDoc extends Document{
 	//Methods
 	public String getValuePay() 
 	{
-		return "想囹告赅"+sep+String.join(sep,getValue(),employee)+end;
+		return "想囹告赅"+SEP+String.join(SEP,getValue(),employee)+END;
 	}
 	
 	public String getShortValue() 

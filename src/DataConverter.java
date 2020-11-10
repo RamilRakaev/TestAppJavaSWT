@@ -9,7 +9,13 @@ public class DataConverter {
 
 	public DataConverter() {
 		fs=new FileSave();
-		documents=new ArrayList<>(Arrays.asList(fs.Read().split(Document.end)));
+		documents=new ArrayList<>(Arrays.asList(fs.Read().split(Document.END)));
+		//System.out.println(documents.size()+" init");
+		if(documents.contains("")) 
+		{
+			documents.remove("");
+		}
+		
 	}
 
 	//Properties
@@ -20,7 +26,7 @@ public class DataConverter {
 	public void SaveChanges(ApplicationPaymentDoc doc) 
 	{
 		fs.Save(doc.getValueAppPay());
-		documents.add(doc.getValue());
+		documents.add(doc.getValueAppPay());
 		TreeItem item =new TreeItem(TestApp.tree,SWT.NONE);
 		item.setText(doc.getShortValue());
 	}
@@ -37,18 +43,19 @@ public class DataConverter {
 	public void SaveChanges(InvoceDoc doc) 
 	{
 		fs.Save(doc.getValueInvoce());
-		documents.add(doc.getValue());
+		documents.add(doc.getValueInvoce());
 		TreeItem item =new TreeItem(TestApp.tree,SWT.NONE);
 		item.setText(doc.getShortValue());
 	}
 	
 	public void ExtractData() 
 	{
+		
 		for(String offer :documents) 
 		{
 			if(offer!="" && offer!=" ") 
 			{
-			String[]values=offer.split(Document.sep);
+			String[]values=offer.split(Document.SEP);
 				switch(values[0])
 				{
 				case "想囹告赅":
@@ -90,12 +97,11 @@ public class DataConverter {
 			}
 			else 
 			{
-				if(offer.split(Document.sep)[1].compareTo(number)==0) 
+				if(offer.split(Document.SEP)[1].compareTo(number)==0) 
 				{
 				editionFile=offer;
-					TestApp.currentDoc=offer.split(Document.sep);
-					//return offer.substring(0, offer.indexOf(Document.sep));
-					switch(offer.substring(0, offer.indexOf(Document.sep))) 
+					TestApp.currentDoc=offer.split(Document.SEP);
+					switch(offer.substring(0, offer.indexOf(Document.SEP))) 
 					{
 					case "想囹告赅":
 						return "PayDoc";
@@ -124,11 +130,12 @@ public class DataConverter {
 				editionFile=offer;
 			}
 		}
-		
+		System.out.println(documents.size());
 		if(documents.contains(editionFile)) 
 		{
 			documents.remove(editionFile);
 		}
+		System.out.println(documents.size());
 		editionFile="";
 		ReplaceData();
 		TestApp.tree.removeAll();
@@ -140,7 +147,7 @@ public class DataConverter {
 		String newDocuments="";
 		for(String offer:documents) 
 		{
-			newDocuments+=offer+Document.end;
+			newDocuments+=offer+Document.END;
 		}
 		fs.Replace(newDocuments);
 	}
@@ -150,7 +157,7 @@ public class DataConverter {
 		for(String offer:documents) 
 		{
 			if(offer.compareTo("")!=0)
-			if(offer.split(Document.sep)[1].compareTo(_number)==0) 
+			if(offer.split(Document.SEP)[1].compareTo(_number)==0) 
 			{
 				return false;
 			}
@@ -171,7 +178,7 @@ public class DataConverter {
 		{
 			System.out.println("Error: DataConverter/OpenFileDocuments");
 		}
-		documents=new ArrayList<>(Arrays.asList(fs.Read().split(Document.end)));
+		documents=new ArrayList<>(Arrays.asList(fs.Read().split(Document.END)));
 		TestApp.tree.removeAll();
 		ExtractData();
 	}
@@ -190,7 +197,7 @@ public class DataConverter {
 		}
 		fs=new FileSave(path);
 		TestApp.tree.removeAll();
-		documents=new ArrayList<>(Arrays.asList(fs.Read().split(Document.end)));
+		documents=new ArrayList<>(Arrays.asList(fs.Read().split(Document.END)));
 		ExtractData();
 	}
 }

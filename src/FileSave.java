@@ -36,7 +36,7 @@ public class FileSave {
 	}
 	
 	public File doc;
-	public String file="documents.txt";
+	private String file="documents.txt";
 	
 	public void Save(String _text) 
 	{

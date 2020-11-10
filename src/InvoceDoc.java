@@ -52,8 +52,8 @@ public class InvoceDoc extends Document {
 
 			public String getValueInvoce() 
 			{
-				return "Накладная"+sep+String.join(sep,getValue(),currency,Double.toString(rate),
-						product,Double.toString(quantity))+end;
+				return "Накладная"+SEP+String.join(SEP,getValue(),currency,Double.toString(rate),
+						product,Double.toString(quantity))+END;
 			}
 			
 			public String getShortValue() 

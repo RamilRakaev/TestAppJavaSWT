@@ -1,23 +1,14 @@
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Tree;
-import java.io.FileWriter;
-import java.util.ArrayList;
 
-
-import org.eclipse.swt.widgets.TreeItem;
-import org.eclipse.swt.widgets.Dialog;
-import org.eclipse.swt.widgets.DirectoryDialog;
 
 public class TestApp {
 
@@ -32,7 +23,6 @@ public class TestApp {
 	
 	public static void main(String[] args) {
 	
-		
 		Display display = Display.getDefault();
 		Shell shell = new Shell();
 		shell.setSize(568, 507);
